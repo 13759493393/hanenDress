@@ -1,0 +1,401 @@
+{
+	"id": "3aeb4eb0-17ff-4016-8f5e-01b7d22ebb76",
+	"name": "jliro",
+	"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"5cf81949-ab78-4615-9bd1-b02a780706b5",
+		"9ae731a4-a79f-4c80-9132-3e6f97ad654e",
+		"d2e6fe01-9ad5-4cf4-add4-0db1d7a79ad9",
+		"5dc7b70a-797e-4a93-8180-62196a134d78",
+		"6fe2e9bb-9433-421d-8888-58c5e0418ba8",
+		"e651d925-0e44-433b-a384-791c625beadf",
+		"f4b55958-e476-43af-895c-1f63abc26596",
+		"805ed7cd-999f-4694-8012-45d7e73e4c9c",
+		"d582857c-3d27-4f1f-a3a6-9683da981b4c",
+		"06e93123-4c10-4ed4-a0e7-2f285764caee",
+		"7e189bd5-8ffa-4884-be72-aaa33f562015",
+		"f1ab63c2-ac70-45d3-94a2-175b12d4706b",
+		"d7e7dea6-c3e3-4228-bea8-5c2954b0a52f",
+		"b61f621e-9ba9-4119-8dd7-fc66518fa703"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "06e93123-4c10-4ed4-a0e7-2f285764caee",
+			"name": "产品分类id换取 分类名称",
+			"url": "jliro.hnla.cn/api/Api/pdtCateIdToName/?cate_id=17",
+			"description": "\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "cate_id",
+					"value": "17",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "5cf81949-ab78-4615-9bd1-b02a780706b5",
+			"name": "产品一级分类",
+			"url": "jliro.hnla.cn/api/Api/productCate?pid=0",
+			"description": "产品分类",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "pid",
+					"value": "0",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "5dc7b70a-797e-4a93-8180-62196a134d78",
+			"name": "新闻分类",
+			"url": "jliro.hnla.cn/api/Api/newsCate",
+			"description": "新闻分类\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "6fe2e9bb-9433-421d-8888-58c5e0418ba8",
+			"name": "新闻按分类分页",
+			"url": "jliro.hnla.cn/api/Api/newsList?cate_id=1&page=1&list_rows=20",
+			"description": "\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "cate_id",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "list_rows",
+					"value": "20",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "7e189bd5-8ffa-4884-be72-aaa33f562015",
+			"name": "服务中心",
+			"url": "jliro.hnla.cn/api/Api/service",
+			"description": "\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "805ed7cd-999f-4694-8012-45d7e73e4c9c",
+			"name": "产品按分类分页（注意分类id只能为二级分类的id  cate2_id）",
+			"url": "jliro.hnla.cn/api/Api/productList?cate2_id=17&page=1&list_rows=2",
+			"description": "\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "cate2_id",
+					"value": "17",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "list_rows",
+					"value": "2",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "9ae731a4-a79f-4c80-9132-3e6f97ad654e",
+			"name": "产品二级分类",
+			"url": "jliro.hnla.cn/api/Api/productCate?pid=12",
+			"description": "产品二级分类\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "pid",
+					"value": "12",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "b61f621e-9ba9-4119-8dd7-fc66518fa703",
+			"name": "首页",
+			"url": "jliro.hnla.cn/api/Api/home",
+			"description": "\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "d2e6fe01-9ad5-4cf4-add4-0db1d7a79ad9",
+			"name": "单一新闻",
+			"url": "jliro.hnla.cn/api/Api/news?id=1",
+			"description": "单一新闻\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "d582857c-3d27-4f1f-a3a6-9683da981b4c",
+			"name": "获取全部产品（分页） cate2_id=0",
+			"url": "jliro.hnla.cn/api/Api/productList?cate2_id=0&page=1&list_rows=20&is_top=1",
+			"description": "\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "cate2_id",
+					"value": "0",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "list_rows",
+					"value": "20",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "is_top",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "d7e7dea6-c3e3-4228-bea8-5c2954b0a52f",
+			"name": "加盟中心",
+			"url": "jliro.hnla.cn/api/Api/join",
+			"description": "\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "e651d925-0e44-433b-a384-791c625beadf",
+			"name": "获取全部新闻（分页） cate_id=0",
+			"url": "jliro.hnla.cn/api/Api/newsList?cate_id=0&page=1&list_rows=20",
+			"description": "\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "cate_id",
+					"value": "0",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "list_rows",
+					"value": "20",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "f1ab63c2-ac70-45d3-94a2-175b12d4706b",
+			"name": "关于我们",
+			"url": "jliro.hnla.cn/api/Api/about",
+			"description": "\n",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "f4b55958-e476-43af-895c-1f63abc26596",
+			"name": "单一产品",
+			"url": "jliro.hnla.cn/api/Api/product?id=1",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
