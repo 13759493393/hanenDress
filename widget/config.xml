@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="A6073611203525">
+    <name>韩恩服饰</name>
+    <content src="index.html" />
+    <preference name="windowBackground" value="#FFF"/>
+</widget>
