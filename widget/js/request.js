@@ -7,7 +7,7 @@ apiready = function () {
             method: "get",
             data: ""
         }, function (ret, err) {
-            alert("进入请求")
+            // alert("进入请求")
             if (ret) {
                 /*alert(ret)
                 alert(JSON.stringify(ret))
@@ -26,11 +26,46 @@ apiready = function () {
                     "<p>" + ret.data.brand.brand2desc + "</p>" +
                     "</a></li>"
                 );
-
-                alert("请求完毕")
             } else {
                 api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
             }
+        alert("请求完毕")
+        }
+    )
+};
+
+//加盟中心请求
+apiready = function () {
+    api.ajax({
+            url: "http://jliro.hnla.cn/api/Api/join",
+            method: "get",
+            data: ""
+        }, function (ret, err) {
+            if (ret) {
+                $(".joinCenter_container").html(ret.data.html);
+                $(".page-banner img").attr("src", ret.data.banner);
+            } else {
+                api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
+            }
+        alert("请求完毕")
+        }
+    )
+};
+
+//关于我们请求
+apiready = function () {
+    api.ajax({
+            url: "http://jliro.hnla.cn/api/Api/about",
+            method: "get",
+            data: ""
+        }, function (ret, err) {
+            if (ret) {
+                $(".forUsContent_container").html(ret.data.html);
+                $(".page-banner img").attr("src", ret.data.banner);
+            } else {
+                api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
+            }
+            alert("请求完毕")
         }
     )
 };
