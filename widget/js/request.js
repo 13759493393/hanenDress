@@ -1,7 +1,7 @@
 // $(document).ready(function () {
 
 //主页的apicloud请求
-apiready = function () {
+apiready = function (indexPage) {
     api.ajax({
             url: "http://jliro.hnla.cn/api/Api/home",
             method: "get",
@@ -35,7 +35,7 @@ apiready = function () {
 };
 
 //加盟中心请求
-apiready = function () {
+apiready = function (joinCenter) {
     api.ajax({
             url: "http://jliro.hnla.cn/api/Api/join",
             method: "get",
@@ -53,7 +53,7 @@ apiready = function () {
 };
 
 //关于我们请求
-apiready = function () {
+apiready = function (aboutUs) {
     api.ajax({
             url: "http://jliro.hnla.cn/api/Api/about",
             method: "get",
