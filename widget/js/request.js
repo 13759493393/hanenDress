@@ -34,7 +34,7 @@ apiready = function (indexPage) {
     )
 };
 
-//加盟中心请求
+/*//加盟中心请求
 apiready = function (joinCenter) {
     api.ajax({
             url: "http://jliro.hnla.cn/api/Api/join",
@@ -68,7 +68,7 @@ apiready = function (aboutUs) {
             alert("请求完毕")
         }
     )
-};
+};*/
 
 /*    //首页请求
     $.ajax({
