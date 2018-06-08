@@ -170,6 +170,45 @@ apiready = function () {
     );
 
 
+    //获取全部产品
+    api.ajax({
+            url: "http://jliro.hnla.cn/api/Api/productList?cate2_id=0&page=1&list_rows=20&is_top=1",
+            method: "GET",
+            data: ""
+        }, function (ret, err) {
+
+            if (ret) {
+                
+                var allProduct = "";
+                for (var x = 0; x < ret.data.page_data.length; x++) {
+                    if (ret.data.page_data[x][0] != undefined && ret.data.page_data[x][1] != undefined && ret.data.page_data[x][2] != undefined) {
+
+                        allProduct +=
+
+                            "<dl><dt><a id='" + ret.data.page_data[x][0].id + "'>" +
+                            "<img src='" + ret.data.page_data[x][0].thumb + "' alt=''>" +
+                            "<h4>" + ret.data.page_data[x][0].name + "</h4>" +
+                            "<span>￥" + ret.data.page_data[x][0].price + "</span></a></dt><dd>" +
+                            "<a id='" + ret.data.page_data[x][1].id + "'>" +
+                            "<img src='" + ret.data.page_data[x][1].thumb + "' alt=''>" +
+                            "<h4>" + ret.data.page_data[x][1].name + "</h4>" +
+                            "<span>￥" + ret.data.page_data[x][1].price + "</span></a>" +
+                            "<a id='" + ret.data.page_data[x][2].id + "'>" +
+                            "<img src='" + ret.data.page_data[x][2].thumb + "' alt=''>" +
+                            "<h4>" + ret.data.page_data[x][2].name + "</h4>" +
+                            "<span>￥" + ret.data.page_data[x][2].price + "</span></a></dd></dl>"
+                    }
+                }
+                $(".page-product_all").html("<h2>精品推荐</h2>" + allProduct);
+
+
+            } else {
+                api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
+            }
+
+        }
+    );
+
 //单一产品请求
     api.ajax({
             url: "http://jliro.hnla.cn/api/Api/product?id=1",
@@ -374,8 +413,41 @@ apiready = function () {
 
 };
 
+/*//全部产品请求
+$.ajax({
+        url: "http://jliro.hnla.cn/api/Api/productList?cate2_id=0&page=1&list_rows=20&is_top=1",
+        method: "GET",
+        data: "",
+        success: function (data) {
 
 
+            var allProduct = "";
+            for (var x = 0; x < data.data.page_data.length; x++) {
+                if (data.data.page_data[x][0] != undefined && data.data.page_data[x][1] != undefined && data.data.page_data[x][2] != undefined) {
+
+                    allProduct +=
+
+                        "<dl><dt><a id='" + data.data.page_data[x][0].id + "'>" +
+                        "<img src='" + data.data.page_data[x][0].thumb + "' alt=''>" +
+                        "<h4>" + data.data.page_data[x][0].name + "</h4>" +
+                        "<span>￥" + data.data.page_data[x][0].price + "</span></a></dt><dd>" +
+                        "<a id='" + data.data.page_data[x][1].id + "'>" +
+                        "<img src='" + data.data.page_data[x][1].thumb + "' alt=''>" +
+                        "<h4>" + data.data.page_data[x][1].name + "</h4>" +
+                        "<span>￥" + data.data.page_data[x][1].price + "</span></a>" +
+                        "<a id='" + data.data.page_data[x][2].id + "'>" +
+                        "<img src='" + data.data.page_data[x][2].thumb + "' alt=''>" +
+                        "<h4>" + data.data.page_data[x][2].name + "</h4>" +
+                        "<span>￥" + data.data.page_data[x][2].price + "</span></a></dd></dl>"
+                }
+            }
+            $(".page-product_all").html("<h2>精品推荐</h2>" + allProduct);
+
+
+        }
+
+    }
+);*/
 
 
 
