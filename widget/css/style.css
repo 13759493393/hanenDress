@@ -758,6 +758,14 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 }
 
 /*产品*/
+.active_li009{
+    color: #dd196d;
+}
+
+.productDetail{
+    width: 100%;
+}
+
 .product-stype {
     padding: 0.6rem 0;
     background: #f2f2f5;
