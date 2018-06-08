@@ -178,7 +178,7 @@ apiready = function () {
         }, function (ret, err) {
 
             if (ret) {
-                
+
                 var allProduct = "";
                 for (var x = 0; x < ret.data.page_data.length; x++) {
                     if (ret.data.page_data[x][0] != undefined && ret.data.page_data[x][1] != undefined && ret.data.page_data[x][2] != undefined) {
@@ -449,7 +449,83 @@ $.ajax({
     }
 );*/
 
+/*$.ajax({
+    type: "GET",
+        url: "http://jliro.hnla.cn/api/Api/newsCate",
+        data: "",
+   success:function (data) {
+
+       var newContent = "";
+
+       for (var i = 0; i < data.data.length; i++) {
+           newContent += "<li class='swiper-slide' id='" + data.data[i].id + "'><a>" + data.data[i].name + "</a></li>"
+       }
+
+       $(".news-stype ul").html(newContent);
+       $(".news-stype li").css("width", "33.3%");
+       $(".news-stype li").eq(0).addClass("active");
+
+       $.ajax({
+               type: "GET",
+               url: "http://jliro.hnla.cn/api/Api/newsList?cate_id=1&page=1&list_rows=20",
+               data: "",
+           success:function (data) {
+
+               if (data.data.page_data != undefined) {
+
+                   var contentHtml = "";
+                   for (var i = 0; i < data.data.page_data.length; i++) {
+                       contentHtml += "<dl><dt><a href='news-show.html'><img src='" + data.data.page_data[i].thumb + "' alt=''></a></dt><dd>" +
+                           "<span>" + data.data.page_data[i].create_time + "</span>" +
+                           "<h4><a href='news-show.html'>" + data.data.page_data[i].title + "</a></h4>" +
+                           "<p><a href='news-show.html'>" + data.data.page_data[i].description + "</a></p>" +
+                           "<a href='news-show.html' class='more'>MORE</a></dd> </dl>";
+                   }
+                   $(".page-newsList").html(contentHtml);
+
+               } else {
+                   $(".page-newsList").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关新闻！<h3>");
+               }
+           }
+           }
+       );
+
+       $(".news-stype li").click(function () {
+           $(this).addClass("active").siblings().removeClass("active");
+           var thisNewsId = $(this).attr("id");
+
+           $.ajax({
+               type: "GET",
+               url: "http://jliro.hnla.cn/api/Api/newsList?cate_id=" + thisNewsId + "&page=1&list_rows=20",
+               data: "",
+               success: function (data) {
+
+                       if (data.data.page_data != undefined) {
+
+                           var contentHtml = "";
+                           for (var i = 0; i < data.data.page_data.length; i++) {
+                               contentHtml += "<dl><dt><a href='news-show.html'><img src='" + data.data.page_data[i].thumb + "' alt=''></a></dt><dd>" +
+                                   "<span>" + data.data.page_data[i].create_time + "</span>" +
+                                   "<h4><a href='news-show.html'>" + data.data.page_data[i].title + "</a></h4>" +
+                                   "<p><a href='news-show.html'>" + data.data.page_data[i].description + "</a></p>" +
+                                   "<a href='news-show.html' class='more'>MORE</a></dd> </dl>";
+                           }
+                           $(".page-newsList").html(contentHtml);
+
+                       } else {
+                           $(".page-newsList").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关新闻！<h3>");
+                       }
 
 
+               }
+           })
 
+       });
+
+   }}
+);*/
+
+/*$(".footer li").click(function () {
+    $(this).addClass("active").siblings().removeClass("active");
+});*/
 
