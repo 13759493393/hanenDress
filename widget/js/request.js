@@ -501,8 +501,37 @@ apiready = function () {
         }
     );
 
+
+    /*   $(".showBody").load(function () {
+           var this_product_id = localStorage.getItem("cli_product_id");
+           api.ajax({
+               url: "http://jliro.hnla.cn/api/Api/product?id=" + this_product_id + "",
+               method: "get",
+               data: ""
+           }, function (ret, err) {
+
+               if (ret) {
+                   $(".productDetail").html(
+                       "<div class='page-productHead'><img src='" + ret.data.thumb + "'alt=''>" +
+                       "<h4>" + ret.data.name + "</h4><span>￥" + ret.data.price + "</span></div>" +
+                       "<div class='page-productInfo'><p class='code'>商品编号：" + ret.data.pdt_id + "</p>" +
+                       "<span class='title'>简&#12288;&#12288;介：</span>" +
+                       "<p class='text'>" + ret.data.description + "</p></div>"
+                   );
+               } else {
+                   api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
+               }
+
+           });
+       });*/
+
+
+};
+
 //单一产品请求
-    $api.addEvt(".showBody", "load", function () {
+function getId() {
+    apiready = function () {
+
         var this_product_id = localStorage.getItem("cli_product_id");
         api.ajax({
             url: "http://jliro.hnla.cn/api/Api/product?id=" + this_product_id + "",
@@ -523,10 +552,12 @@ apiready = function () {
             }
 
         });
-    });
+
+    };
 
 
-};
+}
+
 
 /*//全部产品请求
 $.ajax({
@@ -810,12 +841,12 @@ $.ajax({
 
         }
     }
-);
+);*/
 
 
 //单一产品请求
 
-function getId() {
+/*function getId() {
     var this_product_id = localStorage.getItem("cli_product_id");
     alert(this_product_id);
     $.ajax({
@@ -839,3 +870,53 @@ function getId() {
     });
 }*/
 
+/*$(".showBody").onload = function(){
+
+    var this_product_id = localStorage.getItem("cli_product_id");
+    alert(this_product_id);
+    $.ajax({
+        url: "http://jliro.hnla.cn/api/Api/product?id=" + this_product_id + "",
+        type: "get",
+        data: "",
+        success: function (data) {
+
+            $(".productDetail").html(
+                "<div class='page-productHead'><img src='" + data.data.thumb + "'alt=''>" +
+                "<h4>" + data.data.name + "</h4><span>￥" + data.data.price + "</span></div>" +
+                "<div class='page-productInfo'><p class='code'>商品编号：" + data.data.pdt_id + "</p>" +
+                "<span class='title'>简&#12288;&#12288;介：</span>" +
+                "<p class='text'>" + data.data.description + "</p></div>"
+            );
+        },
+        error: function () {
+            alert("请求失败");
+        }
+
+    });
+
+};*/
+
+/*
+function getId(){
+    var this_product_id = localStorage.getItem("cli_product_id");
+    alert(this_product_id);
+    $.ajax({
+        url: "http://jliro.hnla.cn/api/Api/product?id=" + this_product_id + "",
+        type: "get",
+        data: "",
+        success: function (data) {
+
+            $(".productDetail").html(
+                "<div class='page-productHead'><img src='" + data.data.thumb + "'alt=''>" +
+                "<h4>" + data.data.name + "</h4><span>￥" + data.data.price + "</span></div>" +
+                "<div class='page-productInfo'><p class='code'>商品编号：" + data.data.pdt_id + "</p>" +
+                "<span class='title'>简&#12288;&#12288;介：</span>" +
+                "<p class='text'>" + data.data.description + "</p></div>"
+            );
+        },
+        error: function () {
+            alert("请求失败");
+        }
+
+    });
+}*/
