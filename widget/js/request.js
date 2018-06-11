@@ -282,6 +282,11 @@ apiready = function () {
                 }
                 $(".page-product_all").html("<h2>精品推荐</h2>" + allProduct);
 
+                $(".page-product a").click(function () {
+                    var this_product_id_show = $(this).attr("id");
+                    localStorage.setItem("cli_product_id", this_product_id_show);
+                    window.location.href = "product-show.html";
+                });
 
             } else {
                 api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
@@ -291,13 +296,16 @@ apiready = function () {
     );
 
 //单一产品请求
-    api.ajax({
-            url: "http://jliro.hnla.cn/api/Api/product?id=1",
+
+    function getId() {
+        var this_product_id = localStorage.getItem("cli_product_id");
+        api.ajax({
+            url: "http://jliro.hnla.cn/api/Api/product?id="+this_product_id+"",
             method: "get",
             data: ""
-        }, function (ret, err) {
+            },function (ret,err) {
 
-            if (ret) {
+            if(ret){
                 $(".productDetail").html(
                     "<div class='page-productHead'><img src='" + ret.data.thumb + "'alt=''>" +
                     "<h4>" + ret.data.name + "</h4><span>￥" + ret.data.price + "</span></div>" +
@@ -305,12 +313,12 @@ apiready = function () {
                     "<span class='title'>简&#12288;&#12288;介：</span>" +
                     "<p class='text'>" + ret.data.description + "</p></div>"
                 );
-            } else {
+            }else{
                 api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
             }
 
-        }
-    );
+        });
+    }
 
     //product-list页面的点击跳转
     $(".product-stypeList dd span").eq(0).addClass("active");
@@ -491,9 +499,11 @@ apiready = function () {
         }
     );
 
+
 };
 
-/*//全部产品请求
+/*
+//全部产品请求
 $.ajax({
         url: "http://jliro.hnla.cn/api/Api/productList?cate2_id=0&page=1&list_rows=20&is_top=1",
         method: "GET",
@@ -507,15 +517,15 @@ $.ajax({
 
                     allProduct +=
 
-                        "<dl><dt><a id='" + data.data.page_data[x][0].id + "'>" +
+                        "<dl><dt><a href='javascript:void(0)' id='" + data.data.page_data[x][0].id + "'>" +
                         "<img src='" + data.data.page_data[x][0].thumb + "' alt=''>" +
                         "<h4>" + data.data.page_data[x][0].name + "</h4>" +
                         "<span>￥" + data.data.page_data[x][0].price + "</span></a></dt><dd>" +
-                        "<a id='" + data.data.page_data[x][1].id + "'>" +
+                        "<a href='javascript:void(0)' id='" + data.data.page_data[x][1].id + "'>" +
                         "<img src='" + data.data.page_data[x][1].thumb + "' alt=''>" +
                         "<h4>" + data.data.page_data[x][1].name + "</h4>" +
                         "<span>￥" + data.data.page_data[x][1].price + "</span></a>" +
-                        "<a id='" + data.data.page_data[x][2].id + "'>" +
+                        "<a href='javascript:void(0)' id='" + data.data.page_data[x][2].id + "'>" +
                         "<img src='" + data.data.page_data[x][2].thumb + "' alt=''>" +
                         "<h4>" + data.data.page_data[x][2].name + "</h4>" +
                         "<span>￥" + data.data.page_data[x][2].price + "</span></a></dd></dl>"
@@ -523,11 +533,50 @@ $.ajax({
             }
             $(".page-product_all").html("<h2>精品推荐</h2>" + allProduct);
 
-
+            $(".page-product a").click(function () {
+                var this_product_id_show = $(this).attr("id");
+                localStorage.setItem("cli_product_id", this_product_id_show);
+                window.location.href = "product-show.html";
+            });
         }
 
     }
-);*/
+);
+*/
+
+
+//单一产品请求
+/*$(".page-product a").click(function () {
+    var this_product_id_show = $(this).attr("id");
+
+});*/
+
+
+/*$(".productDetail").load(function () {
+    var this_product_id = localStorage.getItem("cli_product_id");
+    alert(this_product_id);
+});*/
+
+/*function getId() {
+    var this_product_id = localStorage.getItem("cli_product_id");
+    $.ajax({
+        url: "http://jliro.hnla.cn/api/Api/product?id="+this_product_id+"",
+        type: "get",
+        data: "",
+        success: function (data) {
+
+            $(".productDetail").html(
+                "<div class='page-productHead'><img src='" + data.data.thumb + "'alt=''>" +
+                "<h4>" + data.data.name + "</h4><span>￥" + data.data.price + "</span></div>" +
+                "<div class='page-productInfo'><p class='code'>商品编号：" + data.data.pdt_id + "</p>" +
+                "<span class='title'>简&#12288;&#12288;介：</span>" +
+                "<p class='text'>" + data.data.description + "</p></div>"
+            );
+        }
+
+    });
+}*/
+
 
 //新闻请求
 /*$.ajax({
