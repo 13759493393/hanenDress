@@ -357,6 +357,15 @@ apiready = function () {
                                 "<span>￥" + ret.data.page_data[0][2].price + "</span></a></dd></dl>"
 
                             $(".page-product_list").html(productListHtml);
+
+                            $(".page-product_list a").click(function () {
+
+                                var this_product_id_show = $(this).attr("id");
+                                localStorage.setItem("cli_product_id", this_product_id_show);
+                                window.location.href = "product-show.html";
+
+                            });
+
                         } else {
                             api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
                         }
@@ -466,6 +475,15 @@ apiready = function () {
 
                                 }
                                 $(".page-product_list").html(productListHtml);
+
+                                $(".page-product_list a").click(function () {
+
+                                    var this_product_id_show = $(this).attr("id");
+                                    localStorage.setItem("cli_product_id", this_product_id_show);
+                                    window.location.href = "product-show.html";
+
+                                });
+
                             } else {
                                 $(".page-product_list").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关产品！<h3>");
                             }
@@ -484,7 +502,7 @@ apiready = function () {
     );
 
 //单一产品请求
-    function getId() {
+    $api.addEvt(".showBody", "load", function () {
         var this_product_id = localStorage.getItem("cli_product_id");
         api.ajax({
             url: "http://jliro.hnla.cn/api/Api/product?id=" + this_product_id + "",
@@ -505,7 +523,7 @@ apiready = function () {
             }
 
         });
-    }
+    });
 
 
 };
@@ -524,68 +542,31 @@ $.ajax({
 
                     allProduct +=
 
-                        "<dl><dt><a href='javascript:void(0)' id='" + data.data.page_data[x][0].id + "'>" +
+                        "<dl><dt><a class='clickToShow' href='javascript:void(0)' id='" + data.data.page_data[x][0].id + "'>" +
                         "<img src='" + data.data.page_data[x][0].thumb + "' alt=''>" +
                         "<h4>" + data.data.page_data[x][0].name + "</h4>" +
                         "<span>￥" + data.data.page_data[x][0].price + "</span></a></dt><dd>" +
-                        "<a href='javascript:void(0)' id='" + data.data.page_data[x][1].id + "'>" +
+                        "<a class='clickToShow' href='javascript:void(0)' id='" + data.data.page_data[x][1].id + "'>" +
                         "<img src='" + data.data.page_data[x][1].thumb + "' alt=''>" +
                         "<h4>" + data.data.page_data[x][1].name + "</h4>" +
                         "<span>￥" + data.data.page_data[x][1].price + "</span></a>" +
-                        "<a href='javascript:void(0)' id='" + data.data.page_data[x][2].id + "'>" +
+                        "<a class='clickToShow' href='javascript:void(0)' id='" + data.data.page_data[x][2].id + "'>" +
                         "<img src='" + data.data.page_data[x][2].thumb + "' alt=''>" +
                         "<h4>" + data.data.page_data[x][2].name + "</h4>" +
                         "<span>￥" + data.data.page_data[x][2].price + "</span></a></dd></dl>"
                 }
             }
             $(".page-product_all").html("<h2>精品推荐</h2>" + allProduct);
-
             $(".page-product_all a").click(function () {
                 var this_product_id_show = $(this).attr("id");
                 localStorage.setItem("cli_product_id", this_product_id_show);
                 window.location.href = "product-show.html";
             });
+
         }
 
     }
 );*/
-
-
-//单一产品请求
-/*$(".page-product a").click(function () {
-    var this_product_id_show = $(this).attr("id");
-
-});*/
-
-
-/*$(".productDetail").load(function () {
-    var this_product_id = localStorage.getItem("cli_product_id");
-    alert(this_product_id);
-});*/
-
-/*function getId() {
-    var this_product_id = localStorage.getItem("cli_product_id");
-    alert(this_product_id);
-    $.ajax({
-        url: "http://jliro.hnla.cn/api/Api/product?id=" + this_product_id + "",
-        type: "get",
-        data: "",
-        success: function (data) {
-
-            $(".productDetail").html(
-                "<div class='page-productHead'><img src='" + data.data.thumb + "'alt=''>" +
-                "<h4>" + data.data.name + "</h4><span>￥" + data.data.price + "</span></div>" +
-                "<div class='page-productInfo'><p class='code'>商品编号：" + data.data.pdt_id + "</p>" +
-                "<span class='title'>简&#12288;&#12288;介：</span>" +
-                "<p class='text'>" + data.data.description + "</p></div>"
-            );
-        },
-        error:function () {
-            alert("请求失败");
-        }
-
-    });
-}*/
 
 
 //新闻请求
@@ -666,4 +647,195 @@ $.ajax({
 );*/
 
 
+/*//产品二级分类请求
+//产品按分类分页请求
+$.ajax({
+        type: "GET",
+        data: "",
+        url: "http://jliro.hnla.cn/api/Api/productCate?pid=1",
+        success: function (data) {
+            var spanContent = "";
+            for (var i = 0; i < 4; i++) {
+                spanContent += "<span id='" + data.data[i].id + "'>" + data.data[i].name + "</span>"
+            }
+            // console.log(spanContent);
+            $(".product-stypeList dd").html(spanContent);
+            $(".product-stypeList dd span").eq(0).addClass("active");
+
+            $.ajax({
+                    type: "GET",
+                    data: "",
+                    url: "http://jliro.hnla.cn/api/Api/productList?cate2_id=16&page=1&list_rows=20",
+                    success: function (data) {
+                        var productListHtml = "";
+                        productListHtml +=
+
+                            "<dl><dt><a href='javascript:void(0)' id='" + data.data.page_data[0][0].id + "'>" +
+                            "<img src='" + data.data.page_data[0][0].thumb + "' alt=''>" +
+                            "<h4>" + data.data.page_data[0][0].name + "</h4>" +
+                            "<span>￥" + data.data.page_data[0][0].price + "</span></a></dt><dd>" +
+                            "<a href='javascript:void(0)' id='" + data.data.page_data[0][1].id + "'>" +
+                            "<img src='" + data.data.page_data[0][1].thumb + "' alt=''>" +
+                            "<h4>" + data.data.page_data[0][1].name + "</h4>" +
+                            "<span>￥" + data.data.page_data[0][1].price + "</span></a>" +
+                            "<a href='javascript:void(0)' id='" + data.data.page_data[0][2].id + "'>" +
+                            "<img src='" + data.data.page_data[0][2].thumb + "' alt=''>" +
+                            "<h4>" + data.data.page_data[0][2].name + "</h4>" +
+                            "<span>￥" + data.data.page_data[0][2].price + "</span></a></dd></dl>"
+
+                        $(".page-product_list").html(productListHtml);
+                        $(".page-product_list a").click(function () {
+                            var this_product_id_show = $(this).attr("id");
+                            localStorage.setItem("cli_product_id", this_product_id_show);
+                            window.location.href = "product-show.html";
+                        });
+                    }
+                }
+            );
+
+            var liContent = "";
+            for (var x = 4; x < data.data.length; x++) {
+                liContent += "<li id='" + data.data[x].id + "'>" + data.data[x].name + "</li>"
+            }
+            $(".product-stypeList ul").html(liContent);
+
+            //product-list页面的点击跳转
+            $(".product-stypeList dd span").eq(0).addClass("active");
+            $(".product-stypeList dd span").click(function () {
+                $(".product-stypeList ul li").removeClass("active_li009");
+                var contentText = $(this).text();
+                $(this).addClass("active").siblings().removeClass("active");
+                $(".page-product h2").html(contentText);
+                var this_span_id = $(this).attr("id");
+                //跳转到产品二级页面请求
+                //span跳转请求
+                $.ajax({
+                    type: "GET",
+                    url: "http://jliro.hnla.cn/api/Api/productList?cate2_id=" + this_span_id + "&page=1&list_rows=20",
+                    data: "",
+                    success: function (data) {
+
+                        var productListHtml = "";
+                        if (data.data != undefined) {
+                            for (var x = 0; x < data.data.page_data.length; x++) {
+                                if (data.data.page_data[x][0] != undefined && data.data.page_data[x][1] != undefined && data.data.page_data[x][2] != undefined) {
+
+                                    productListHtml +=
+
+                                        "<dl><dt><a href='javascript:void(0)' id='" + data.data.page_data[x][0].id + "'>" +
+                                        "<img src='" + data.data.page_data[x][0].thumb + "' alt=''>" +
+                                        "<h4>" + data.data.page_data[x][0].name + "</h4>" +
+                                        "<span>￥" + data.data.page_data[x][0].price + "</span></a></dt><dd>" +
+                                        "<a href='javascript:void(0)' id='" + data.data.page_data[x][1].id + "'>" +
+                                        "<img src='" + data.data.page_data[x][1].thumb + "' alt=''>" +
+                                        "<h4>" + data.data.page_data[x][1].name + "</h4>" +
+                                        "<span>￥" + data.data.page_data[x][1].price + "</span></a>" +
+                                        "<a href='javascript:void(0)' id='" + data.data.page_data[x][2].id + "'>" +
+                                        "<img src='" + data.data.page_data[x][2].thumb + "' alt=''>" +
+                                        "<h4>" + data.data.page_data[x][2].name + "</h4>" +
+                                        "<span>￥" + data.data.page_data[x][2].price + "</span></a></dd></dl>"
+                                }
+                            }
+                            $(".page-product_list").html(productListHtml);
+
+                            $(".page-product_list a").click(function () {
+                                var this_product_id_show = $(this).attr("id");
+                                localStorage.setItem("cli_product_id", this_product_id_show);
+                                window.location.href = "product-show.html";
+                            });
+
+
+                        } else {
+                            $(".page-product_list").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关产品！<h3>");
+                        }
+
+                    }
+
+                })
+
+            });
+            //li跳转请求
+            $(".product-stypeList ul li").click(function () {
+                $(".product-stypeList dd span").removeClass("active");
+                var contentText_li = $(this).text();
+                $(this).addClass("active_li009").siblings().removeClass("active_li009");
+                $(".page-product h2").html(contentText_li);
+                var this_li_id = $(this).attr("id");
+                // alert(this_li_id)
+
+                $.ajax({
+                    type: "GET",
+                    data: "",
+                    url: "http://jliro.hnla.cn/api/Api/productList?cate2_id=" + this_li_id + "&page=1&list_rows=20",
+                    success: function (data) {
+
+                        var productListHtml = "";
+                        if (data.data != undefined) {
+                            for (var x = 4; x < data.data.page_data.length; x++) {
+
+                                productListHtml +=
+
+                                    "<dl><dt><a href='javascript:void(0)' id='" + data.data.page_data[x][0].id + "'>" +
+                                    "<img src='" + data.data.page_data[x][0].thumb + "' alt=''>" +
+                                    "<h4>" + data.data.page_data[x][0].name + "</h4>" +
+                                    "<span>￥" + data.data.page_data[x][0].price + "</span></a></dt><dd>" +
+                                    "<a href='javascript:void(0)' id='" + data.data.page_data[x][1].id + "'>" +
+                                    "<img src='" + data.data.page_data[x][1].thumb + "' alt=''>" +
+                                    "<h4>" + data.data.page_data[x][1].name + "</h4>" +
+                                    "<span>￥" + data.data.page_data[x][1].price + "</span></a>" +
+                                    "<a href='javascript:void(0)' id='" + data.data.page_data[x][2].id + "'>" +
+                                    "<img src='" + data.data.page_data[x][2].thumb + "' alt=''>" +
+                                    "<h4>" + data.data.page_data[x][2].name + "</h4>" +
+                                    "<span>￥" + data.data.page_data[x][2].price + "</span></a></dd></dl>"
+
+                            }
+                            $(".page-product_list").html(productListHtml);
+
+                            $(".page-product_list a").click(function () {
+                                var this_product_id_show = $(this).attr("id");
+                                localStorage.setItem("cli_product_id", this_product_id_show);
+                                window.location.href = "product-show.html";
+                            });
+
+                        } else {
+                            $(".page-product_list").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关产品！<h3>");
+                        }
+
+                    }
+
+                })
+
+            });
+
+
+        }
+    }
+);
+
+
+//单一产品请求
+
+function getId() {
+    var this_product_id = localStorage.getItem("cli_product_id");
+    alert(this_product_id);
+    $.ajax({
+        url: "http://jliro.hnla.cn/api/Api/product?id=" + this_product_id + "",
+        type: "get",
+        data: "",
+        success: function (data) {
+
+            $(".productDetail").html(
+                "<div class='page-productHead'><img src='" + data.data.thumb + "'alt=''>" +
+                "<h4>" + data.data.name + "</h4><span>￥" + data.data.price + "</span></div>" +
+                "<div class='page-productInfo'><p class='code'>商品编号：" + data.data.pdt_id + "</p>" +
+                "<span class='title'>简&#12288;&#12288;介：</span>" +
+                "<p class='text'>" + data.data.description + "</p></div>"
+            );
+        },
+        error: function () {
+            alert("请求失败");
+        }
+
+    });
+}*/
 
