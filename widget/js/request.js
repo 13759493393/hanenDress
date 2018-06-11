@@ -72,15 +72,107 @@ apiready = function () {
     );
 
     //新闻请求
+    /* api.ajax({
+             method: "GET",
+             url: "http://jliro.hnla.cn/api/Api/newsCate",
+             data: ""
+         },
+         function (ret, err) {
+
+             if (ret) {
+
+                 var newContent = "";
+
+                 for (var i = 0; i < ret.data.length; i++) {
+                     newContent += "<li class='swiper-slide' id='" + ret.data[i].id + "'><a>" + ret.data[i].name + "</a></li>"
+                 }
+
+                 $(".news-stype ul").html(newContent);
+                 $(".news-stype li").css("width", "33.3%");
+                 $(".news-stype li").eq(0).addClass("active");
+
+                 api.ajax({
+                         method: "GET",
+                         url: "http://jliro.hnla.cn/api/Api/newsList?cate_id=1&page=1&list_rows=20",
+                         data: ""
+                     }, function (ret, err) {
+
+                         if (ret) {
+
+                             if (ret.data.page_data != undefined) {
+
+                                 var contentHtml = "";
+                                 for (var i = 0; i < ret.data.page_data.length; i++) {
+                                     contentHtml += "<dl><dt><a href='news-show.html'><img src='" + ret.data.page_data[i].thumb + "' alt=''></a></dt><dd>" +
+                                         "<span>" + ret.data.page_data[i].create_time + "</span>" +
+                                         "<h4><a href='news-show.html'>" + ret.data.page_data[i].title + "</a></h4>" +
+                                         "<p><a href='news-show.html'>" + ret.data.page_data[i].description + "</a></p>" +
+                                         "<a href='news-show.html' class='more'>MORE</a></dd> </dl>";
+                                 }
+                                 $(".page-newsList").html(contentHtml);
+
+                             } else {
+                                 $(".page-newsList").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关新闻！<h3>");
+                             }
+
+                         } else {
+                             api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
+                         }
+
+                     }
+                 );
+
+                 $(".news-stype li").click(function () {
+                     $(this).addClass("active").siblings().removeClass("active");
+                     var thisNewsId = $(this).attr("id");
+
+                     api.ajax({
+                         method: "GET",
+                         url: "http://jliro.hnla.cn/api/Api/newsList?cate_id=" + thisNewsId + "&page=1&list_rows=20",
+                         data: "",
+                         success: function (ret, err) {
+
+                             if (ret) {
+
+                                 if (ret.data.page_data != undefined) {
+
+                                     var contentHtml = "";
+                                     for (var i = 0; i < ret.data.page_data.length; i++) {
+                                         contentHtml += "<dl><dt><a href='news-show.html'><img src='" + ret.data.page_data[i].thumb + "' alt=''></a></dt><dd>" +
+                                             "<span>" + ret.data.page_data[i].create_time + "</span>" +
+                                             "<h4><a href='news-show.html'>" + ret.data.page_data[i].title + "</a></h4>" +
+                                             "<p><a href='news-show.html'>" + ret.data.page_data[i].description + "</a></p>" +
+                                             "<a href='news-show.html' class='more'>MORE</a></dd> </dl>";
+                                     }
+                                     $(".page-newsList").html(contentHtml);
+
+                                 } else {
+                                     $(".page-newsList").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关新闻！<h3>");
+                                 }
+
+                             } else {
+                                 api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
+                             }
+
+                         }
+                     })
+
+                 });
+
+             } else {
+                 api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
+             }
+
+         }
+     );*/
+
     api.ajax({
             method: "GET",
             url: "http://jliro.hnla.cn/api/Api/newsCate",
             data: ""
-        },
-        function (ret, err) {
+        }, function (ret, err) {
 
             if (ret) {
-
                 var newContent = "";
 
                 for (var i = 0; i < ret.data.length; i++) {
@@ -98,7 +190,6 @@ apiready = function () {
                     }, function (ret, err) {
 
                         if (ret) {
-
                             if (ret.data.page_data != undefined) {
 
                                 var contentHtml = "";
@@ -114,11 +205,9 @@ apiready = function () {
                             } else {
                                 $(".page-newsList").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关新闻！<h3>");
                             }
-
                         } else {
                             api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
                         }
-
                     }
                 );
 
@@ -129,43 +218,38 @@ apiready = function () {
                     api.ajax({
                         method: "GET",
                         url: "http://jliro.hnla.cn/api/Api/newsList?cate_id=" + thisNewsId + "&page=1&list_rows=20",
-                        data: "",
-                        success: function (ret, err) {
+                        data: ""
+                    }, function (ret, err) {
 
-                            if (ret) {
+                        if (ret) {
+                            if (ret.data.page_data != undefined) {
 
-                                if (ret.data.page_data != undefined) {
-
-                                    var contentHtml = "";
-                                    for (var i = 0; i < ret.data.page_data.length; i++) {
-                                        contentHtml += "<dl><dt><a href='news-show.html'><img src='" + ret.data.page_data[i].thumb + "' alt=''></a></dt><dd>" +
-                                            "<span>" + ret.data.page_data[i].create_time + "</span>" +
-                                            "<h4><a href='news-show.html'>" + ret.data.page_data[i].title + "</a></h4>" +
-                                            "<p><a href='news-show.html'>" + ret.data.page_data[i].description + "</a></p>" +
-                                            "<a href='news-show.html' class='more'>MORE</a></dd> </dl>";
-                                    }
-                                    $(".page-newsList").html(contentHtml);
-
-                                } else {
-                                    $(".page-newsList").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关新闻！<h3>");
+                                var contentHtml = "";
+                                for (var i = 0; i < ret.data.page_data.length; i++) {
+                                    contentHtml += "<dl><dt><a href='news-show.html'><img src='" + ret.data.page_data[i].thumb + "' alt=''></a></dt><dd>" +
+                                        "<span>" + ret.data.page_data[i].create_time + "</span>" +
+                                        "<h4><a href='news-show.html'>" + ret.data.page_data[i].title + "</a></h4>" +
+                                        "<p><a href='news-show.html'>" + ret.data.page_data[i].description + "</a></p>" +
+                                        "<a href='news-show.html' class='more'>MORE</a></dd> </dl>";
                                 }
+                                $(".page-newsList").html(contentHtml);
 
                             } else {
-                                api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
+                                $(".page-newsList").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关新闻！<h3>");
                             }
-
+                        } else {
+                            api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
                         }
+
                     })
 
                 });
-
             } else {
                 api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
             }
 
         }
     );
-
 
     //获取全部产品
     api.ajax({
@@ -407,7 +491,6 @@ apiready = function () {
         }
     );
 
-
 };
 
 /*//全部产品请求
@@ -446,6 +529,7 @@ $.ajax({
     }
 );*/
 
+//新闻请求
 /*$.ajax({
     type: "GET",
         url: "http://jliro.hnla.cn/api/Api/newsCate",
@@ -522,7 +606,5 @@ $.ajax({
    }}
 );*/
 
-/*$(".footer li").click(function () {
-    $(this).addClass("active").siblings().removeClass("active");
-});*/
+
 
