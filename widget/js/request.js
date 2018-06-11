@@ -558,6 +558,28 @@ function getId() {
 
 }
 
+//地图点击
+function mapCli() {
+
+    apiready = function () {
+        var navigator = api.require('navigator');
+        navigator.bMapNavigation({
+            start: { // 起点信息.
+                lon: 112.4772379, // 经度.
+                lat: 34.55648, // 纬度.
+                name: ''
+            },
+            end: { // 终点信息.
+                lon: 112.57062599, // 经度
+                lat: 33.784214, // 纬度
+                name: ''
+            },
+            mode: 'transit'
+        });
+    }
+
+}
+
 
 /*//全部产品请求
 $.ajax({
@@ -920,3 +942,4 @@ function getId(){
 
     });
 }*/
+
