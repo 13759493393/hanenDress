@@ -266,15 +266,15 @@ apiready = function () {
 
                         allProduct +=
 
-                            "<dl><dt><a id='" + ret.data.page_data[x][0].id + "'>" +
+                            "<dl><dt><a href='product-show.html' id='" + ret.data.page_data[x][0].id + "'>" +
                             "<img src='" + ret.data.page_data[x][0].thumb + "' alt=''>" +
                             "<h4>" + ret.data.page_data[x][0].name + "</h4>" +
                             "<span>￥" + ret.data.page_data[x][0].price + "</span></a></dt><dd>" +
-                            "<a id='" + ret.data.page_data[x][1].id + "'>" +
+                            "<a href='product-show.html' id='" + ret.data.page_data[x][1].id + "'>" +
                             "<img src='" + ret.data.page_data[x][1].thumb + "' alt=''>" +
                             "<h4>" + ret.data.page_data[x][1].name + "</h4>" +
                             "<span>￥" + ret.data.page_data[x][1].price + "</span></a>" +
-                            "<a id='" + ret.data.page_data[x][2].id + "'>" +
+                            "<a href='product-show.html' id='" + ret.data.page_data[x][2].id + "'>" +
                             "<img src='" + ret.data.page_data[x][2].thumb + "' alt=''>" +
                             "<h4>" + ret.data.page_data[x][2].name + "</h4>" +
                             "<span>￥" + ret.data.page_data[x][2].price + "</span></a></dd></dl>"
@@ -410,15 +410,15 @@ apiready = function () {
 
                                         productListHtml +=
 
-                                            "<dl><dt><a id='" + ret.data.page_data[x][0].id + "'>" +
+                                            "<dl><dt><a href='product-show.html' id='" + ret.data.page_data[x][0].id + "'>" +
                                             "<img src='" + ret.data.page_data[x][0].thumb + "' alt=''>" +
                                             "<h4>" + ret.data.page_data[x][0].name + "</h4>" +
                                             "<span>￥" + ret.data.page_data[x][0].price + "</span></a></dt><dd>" +
-                                            "<a id='" + ret.data.page_data[x][1].id + "'>" +
+                                            "<a href='product-show.html' id='" + ret.data.page_data[x][1].id + "'>" +
                                             "<img src='" + ret.data.page_data[x][1].thumb + "' alt=''>" +
                                             "<h4>" + ret.data.page_data[x][1].name + "</h4>" +
                                             "<span>￥" + ret.data.page_data[x][1].price + "</span></a>" +
-                                            "<a id='" + ret.data.page_data[x][2].id + "'>" +
+                                            "<a href='product-show.html' id='" + ret.data.page_data[x][2].id + "'>" +
                                             "<img src='" + ret.data.page_data[x][2].thumb + "' alt=''>" +
                                             "<h4>" + ret.data.page_data[x][2].name + "</h4>" +
                                             "<span>￥" + ret.data.page_data[x][2].price + "</span></a></dd></dl>"
