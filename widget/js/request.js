@@ -266,15 +266,15 @@ apiready = function () {
 
                         allProduct +=
 
-                            "<dl><dt><a href='product-show.html' id='" + ret.data.page_data[x][0].id + "'>" +
+                            "<dl><dt><a href='javascript:void(0)' id='" + ret.data.page_data[x][0].id + "'>" +
                             "<img src='" + ret.data.page_data[x][0].thumb + "' alt=''>" +
                             "<h4>" + ret.data.page_data[x][0].name + "</h4>" +
                             "<span>￥" + ret.data.page_data[x][0].price + "</span></a></dt><dd>" +
-                            "<a href='product-show.html' id='" + ret.data.page_data[x][1].id + "'>" +
+                            "<a href='javascript:void(0)' id='" + ret.data.page_data[x][1].id + "'>" +
                             "<img src='" + ret.data.page_data[x][1].thumb + "' alt=''>" +
                             "<h4>" + ret.data.page_data[x][1].name + "</h4>" +
                             "<span>￥" + ret.data.page_data[x][1].price + "</span></a>" +
-                            "<a href='product-show.html' id='" + ret.data.page_data[x][2].id + "'>" +
+                            "<a href='javascript:void(0)' id='" + ret.data.page_data[x][2].id + "'>" +
                             "<img src='" + ret.data.page_data[x][2].thumb + "' alt=''>" +
                             "<h4>" + ret.data.page_data[x][2].name + "</h4>" +
                             "<span>￥" + ret.data.page_data[x][2].price + "</span></a></dd></dl>"
@@ -294,31 +294,6 @@ apiready = function () {
 
         }
     );
-
-//单一产品请求
-
-    function getId() {
-        var this_product_id = localStorage.getItem("cli_product_id");
-        api.ajax({
-            url: "http://jliro.hnla.cn/api/Api/product?id="+this_product_id+"",
-            method: "get",
-            data: ""
-            },function (ret,err) {
-
-            if(ret){
-                $(".productDetail").html(
-                    "<div class='page-productHead'><img src='" + ret.data.thumb + "'alt=''>" +
-                    "<h4>" + ret.data.name + "</h4><span>￥" + ret.data.price + "</span></div>" +
-                    "<div class='page-productInfo'><p class='code'>商品编号：" + ret.data.pdt_id + "</p>" +
-                    "<span class='title'>简&#12288;&#12288;介：</span>" +
-                    "<p class='text'>" + ret.data.description + "</p></div>"
-                );
-            }else{
-                api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
-            }
-
-        });
-    }
 
     //product-list页面的点击跳转
     $(".product-stypeList dd span").eq(0).addClass("active");
@@ -368,15 +343,15 @@ apiready = function () {
                             var productListHtml = "";
                             productListHtml +=
 
-                                "<dl><dt><a href='product-show.html' id='" + ret.data.page_data[0][0].id + "'>" +
+                                "<dl><dt><a href='javascript:void(0)' id='" + ret.data.page_data[0][0].id + "'>" +
                                 "<img src='" + ret.data.page_data[0][0].thumb + "' alt=''>" +
                                 "<h4>" + ret.data.page_data[0][0].name + "</h4>" +
                                 "<span>￥" + ret.data.page_data[0][0].price + "</span></a></dt><dd>" +
-                                "<a href='product-show.html' id='" + ret.data.page_data[0][1].id + "'>" +
+                                "<a href='javascript:void(0)' id='" + ret.data.page_data[0][1].id + "'>" +
                                 "<img src='" + ret.data.page_data[0][1].thumb + "' alt=''>" +
                                 "<h4>" + ret.data.page_data[0][1].name + "</h4>" +
                                 "<span>￥" + ret.data.page_data[0][1].price + "</span></a>" +
-                                "<a href='product-show.html' id='" + ret.data.page_data[0][2].id + "'>" +
+                                "<a href='javascript:void(0)' id='" + ret.data.page_data[0][2].id + "'>" +
                                 "<img src='" + ret.data.page_data[0][2].thumb + "' alt=''>" +
                                 "<h4>" + ret.data.page_data[0][2].name + "</h4>" +
                                 "<span>￥" + ret.data.page_data[0][2].price + "</span></a></dd></dl>"
@@ -418,21 +393,30 @@ apiready = function () {
 
                                         productListHtml +=
 
-                                            "<dl><dt><a href='product-show.html' id='" + ret.data.page_data[x][0].id + "'>" +
+                                            "<dl><dt><a href='javascript:void(0)' id='" + ret.data.page_data[x][0].id + "'>" +
                                             "<img src='" + ret.data.page_data[x][0].thumb + "' alt=''>" +
                                             "<h4>" + ret.data.page_data[x][0].name + "</h4>" +
                                             "<span>￥" + ret.data.page_data[x][0].price + "</span></a></dt><dd>" +
-                                            "<a href='product-show.html' id='" + ret.data.page_data[x][1].id + "'>" +
+                                            "<a href='javascript:void(0)' id='" + ret.data.page_data[x][1].id + "'>" +
                                             "<img src='" + ret.data.page_data[x][1].thumb + "' alt=''>" +
                                             "<h4>" + ret.data.page_data[x][1].name + "</h4>" +
                                             "<span>￥" + ret.data.page_data[x][1].price + "</span></a>" +
-                                            "<a href='product-show.html' id='" + ret.data.page_data[x][2].id + "'>" +
+                                            "<a href='javascript:void(0)' id='" + ret.data.page_data[x][2].id + "'>" +
                                             "<img src='" + ret.data.page_data[x][2].thumb + "' alt=''>" +
                                             "<h4>" + ret.data.page_data[x][2].name + "</h4>" +
                                             "<span>￥" + ret.data.page_data[x][2].price + "</span></a></dd></dl>"
                                     }
                                 }
                                 $(".page-product_list").html(productListHtml);
+                                $(".page-product_list a").click(function () {
+
+                                    var this_product_id_show = $(this).attr("id");
+                                    localStorage.setItem("cli_product_id", this_product_id_show);
+                                    window.location.href = "product-show.html";
+
+                                });
+
+
                             } else {
                                 $(".page-product_list").html("<h3 style='text-align: center;line-height: 200%'>抱歉，暂时没有相关产品！<h3>");
                             }
@@ -467,15 +451,15 @@ apiready = function () {
 
                                     productListHtml +=
 
-                                        "<dl><dt><a href='product-show.html' id='" + ret.data.page_data[x][0].id + "'>" +
+                                        "<dl><dt><a href='javascript:void(0)' id='" + ret.data.page_data[x][0].id + "'>" +
                                         "<img src='" + ret.data.page_data[x][0].thumb + "' alt=''>" +
                                         "<h4>" + ret.data.page_data[x][0].name + "</h4>" +
                                         "<span>￥" + ret.data.page_data[x][0].price + "</span></a></dt><dd>" +
-                                        "<a href='product-show.html' id='" + ret.data.page_data[x][1].id + "'>" +
+                                        "<a href='javascript:void(0)' id='" + ret.data.page_data[x][1].id + "'>" +
                                         "<img src='" + ret.data.page_data[x][1].thumb + "' alt=''>" +
                                         "<h4>" + ret.data.page_data[x][1].name + "</h4>" +
                                         "<span>￥" + ret.data.page_data[x][1].price + "</span></a>" +
-                                        "<a href='product-show.html' id='" + ret.data.page_data[x][2].id + "'>" +
+                                        "<a href='javascript:void(0)' id='" + ret.data.page_data[x][2].id + "'>" +
                                         "<img src='" + ret.data.page_data[x][2].thumb + "' alt=''>" +
                                         "<h4>" + ret.data.page_data[x][2].name + "</h4>" +
                                         "<span>￥" + ret.data.page_data[x][2].price + "</span></a></dd></dl>"
@@ -499,11 +483,34 @@ apiready = function () {
         }
     );
 
+//单一产品请求
+    function getId() {
+        var this_product_id = localStorage.getItem("cli_product_id");
+        api.ajax({
+            url: "http://jliro.hnla.cn/api/Api/product?id=" + this_product_id + "",
+            method: "get",
+            data: ""
+        }, function (ret, err) {
+
+            if (ret) {
+                $(".productDetail").html(
+                    "<div class='page-productHead'><img src='" + ret.data.thumb + "'alt=''>" +
+                    "<h4>" + ret.data.name + "</h4><span>￥" + ret.data.price + "</span></div>" +
+                    "<div class='page-productInfo'><p class='code'>商品编号：" + ret.data.pdt_id + "</p>" +
+                    "<span class='title'>简&#12288;&#12288;介：</span>" +
+                    "<p class='text'>" + ret.data.description + "</p></div>"
+                );
+            } else {
+                api.alert({msg: ('错误码：' + err.code + '；错误信息：' + err.msg + '网络状态码：' + err.statusCode)});
+            }
+
+        });
+    }
+
 
 };
 
-/*
-//全部产品请求
+/*//全部产品请求
 $.ajax({
         url: "http://jliro.hnla.cn/api/Api/productList?cate2_id=0&page=1&list_rows=20&is_top=1",
         method: "GET",
@@ -533,7 +540,7 @@ $.ajax({
             }
             $(".page-product_all").html("<h2>精品推荐</h2>" + allProduct);
 
-            $(".page-product a").click(function () {
+            $(".page-product_all a").click(function () {
                 var this_product_id_show = $(this).attr("id");
                 localStorage.setItem("cli_product_id", this_product_id_show);
                 window.location.href = "product-show.html";
@@ -541,8 +548,7 @@ $.ajax({
         }
 
     }
-);
-*/
+);*/
 
 
 //单一产品请求
@@ -559,8 +565,9 @@ $.ajax({
 
 /*function getId() {
     var this_product_id = localStorage.getItem("cli_product_id");
+    alert(this_product_id);
     $.ajax({
-        url: "http://jliro.hnla.cn/api/Api/product?id="+this_product_id+"",
+        url: "http://jliro.hnla.cn/api/Api/product?id=" + this_product_id + "",
         type: "get",
         data: "",
         success: function (data) {
@@ -572,6 +579,9 @@ $.ajax({
                 "<span class='title'>简&#12288;&#12288;介：</span>" +
                 "<p class='text'>" + data.data.description + "</p></div>"
             );
+        },
+        error:function () {
+            alert("请求失败");
         }
 
     });
