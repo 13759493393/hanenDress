@@ -6,9 +6,6 @@ apiready = function () {
             data: ""
         }, function (ret, err) {
             if (ret) {
-                /*alert(ret)
-                alert(JSON.stringify(ret))
-                alert("请求成功")*/
                 $(".index-brand").html(
                     "<li><img src='images/brand-img1.jpg' class='img' alt=''>" +
                     "<a href='" + ret.data.brand.brand1url + "'>" +
